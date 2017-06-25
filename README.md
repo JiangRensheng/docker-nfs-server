@@ -42,6 +42,9 @@ docker exec -ti CONTAINER bash
 ## mounting the nfs share from another host
 mount -v -t nfs -o ro,nfsvers=3,nolock,proto=udp,port=2049 <ip_address_docker_host>:/nfs /mnt/scratch
 
+## Rebuild raid device
+mdadm --assemble --run --force --update=resync /dev/md127 /dev/sd[cdefg]
+
 ## Todo
 * There seems to be a bug on systems with ipv6 disabled kernels/configs:
 [have a look at the mailing list](http://www.spinics.net/lists/linux-nfs/msg53046.html)
