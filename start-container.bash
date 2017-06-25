@@ -15,6 +15,7 @@ is_process_running() {
 stop_container() {
  echo 'received SIGTERM'
  /usr/sbin/rpc.nfsd 0
+ awk '{print $1}' /etc/exports | xargs -i umount {} 2>&1 >/dev/null
  sleep 1
  exit
 }

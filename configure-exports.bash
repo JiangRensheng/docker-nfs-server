@@ -16,10 +16,9 @@ do
   if [ x"$(ls ${!dir} -l | awk '{print $4}')" == x"disk" ]; then
    folder="$(basename ${!dir})"
    export_dir="/mnt/${folder}"
-   echo "make dir : $export_dir"
    [ -d "${export_dir}" ] || mkdir "${export_dir}"
    mount "${!dir}" "${export_dir}"
-   echo ${!export_dir} ${!net}'('${!opt}')'
+   echo ${export_dir} ${!net}'('${!opt}')'
   else
    echo ${!dir} ${!net}'('${!opt}')'
   fi
